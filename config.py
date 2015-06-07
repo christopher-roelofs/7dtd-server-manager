@@ -18,7 +18,7 @@ def create_config():
     config.set('Configuration', 'server', 'true')
     config.set('Configuration', 'verbose', 'false')
     config.set('Configuration', 'debug', 'false')
-    #config.set('Configuration', 'drop_claim_radius', '20')
+    config.set('Configuration', 'drop_claim_radius', '20')
     with open('config.cfg', 'wb') as configfile:
         config.write(configfile)
 
@@ -33,7 +33,7 @@ def read_config():
     runtime.server = config.getboolean('Configuration', 'server')
     runtime.verbose = config.getboolean('Configuration', 'verbose')
     runtime.debug = config.getboolean('Configuration', 'debug')
-    #runtime.drop_claim_radius = config.get('Configuration', 'drop_claim_radius')
+    runtime.drop_claim_radius = config.get('Configuration', 'drop_claim_radius')
 
 def save_config():
     config = ConfigParser.RawConfigParser()
@@ -46,7 +46,7 @@ def save_config():
     config.set('Configuration', 'server', runtime.server)
     config.set('Configuration', 'verbose', runtime.verbose)
     config.set('Configuration', 'debug', runtime.debug)
-    #config.set('Configuration', 'drop_claim_radius', runtime.drop_claim_radius)
+    config.set('Configuration', 'drop_claim_radius', runtime.drop_claim_radius)
     with open('config.cfg', 'wb') as configfile:
         config.write(configfile)
 

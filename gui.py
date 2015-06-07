@@ -38,6 +38,7 @@ def toggle_server():
 def save_settings():
     runtime.host = host_input.get()
     runtime.port = port_input.get()
+    runtime.drop_claim_radius = claim_input.get()
     config.save_config()
     
 root = Tk()
@@ -120,13 +121,19 @@ port_input = Entry(settings_tab, width=15)
 port_input.grid(row=5, column=1, sticky=W)
 port_input.insert(0,runtime.port)
 
+claim_label = Label(settings_tab, width=10, text="Claim Radius: ")
+claim_label.grid(row=6, column=0)
+claim_input = Entry(settings_tab, width=15)
+claim_input.grid(row=6, column=1, sticky=W)
+claim_input.insert(0,runtime.drop_claim_radius)
+
 
 
 
 
 save_btn = Button(settings_tab,text = "Save",command = save_settings)
-save_btn.grid(row=6, column=0, sticky=E)
-Label(settings_tab).grid(row=7,column=0)
+save_btn.grid(row=7, column=0, sticky=E)
+spacer = Label(settings_tab).grid(row=8,column=0)
 
 #system_tab stuff here
 system_tab = Frame(note)
