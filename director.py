@@ -165,7 +165,7 @@ def route(line):
                     if runtime.server:
                         commands.pm(player.name, "You need to set a home first")
                 else:
-                    logger.log_verbose("Teleporting "+player.name + " to " + parse.format_coor(player.home))
+                    logger.log_verbose("Teleporting "+player.name + " to " + util.format_coor(player.home))
                     if runtime.server:
                         commands.teleport(player.name,player.home)
 
@@ -175,9 +175,9 @@ def route(line):
                 player = memorydb.get_player_from_name(p.name)
                 playerdb.save_poi(p.name,p.poiname,player.location)
                 memorydb.add_poi(p.name,p.poiname)
-                logger.log("Poi set for "+p.name +" with name "+ p.poiname +" at: " + parse.format_coor(player.location))
+                logger.log("Poi set for "+p.name +" with name "+ p.poiname +" at: " + util.format_coor(player.location))
                 if runtime.server:
-                    commands.pm(player.name,"Poi " + p.poiname + " set: "+ parse.format_coor(player.location))
+                    commands.pm(player.name,"Poi " + p.poiname + " set: "+ util.format_coor(player.location))
 
 
             if p.event == "Poi":
@@ -187,7 +187,7 @@ def route(line):
                     if runtime.server:
                         commands.pm(p.name,"No poi with that name.")
                 else:
-                    logger.log("Teleporting "+p.name + " to " + parse.format_coor(location))
+                    logger.log("Teleporting "+p.name + " to " + util.format_coor(location))
                     if runtime.server:
                         commands.teleport(p.name,location)
 
@@ -201,7 +201,7 @@ def route(line):
                     for poi in player.pois:
                         name = poi.split(",")[0]
                         location = poi.split(",")[1]
-                        commands.pm(player.name,name + ": "+parse.format_coor(location))
+                        commands.pm(player.name,name + ": " + util.format_coor(location))
 
             if p.event == "Removepoi":
                 logger.log(p.formatted_text)
@@ -251,7 +251,7 @@ def route(line):
                 logger.log(p.formatted_text)
                 if runtime.server:
                     player = memorydb.get_player_from_name(p.name)
-                    commands.pm(p.name,"Current location: " + parse.format_coor(player.location))
+                    commands.pm(p.name,"Current location: " + util.format_coor(player.location))
 
             if p.event == "Drop":
                 logger.log(p.formatted_text)
