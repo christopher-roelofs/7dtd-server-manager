@@ -1,6 +1,5 @@
 __author__ = 'christopher'
 
-import runtime
 
 def format_coor(coor):
     x = coor.split()[0]

@@ -305,7 +305,7 @@ def update():
         time.sleep(.1)
         for event_record in event.gui_event: # this needs to be fixed but works for now
             if event.gui_event[-1][0] == "Log":
-                addInfo(str(event.gui_event[-1][1]))
+                addInfo(event.gui_event[-1][1])
                 event.gui_event.pop()
 
             if event_record[0] == "PlayerUpdate":

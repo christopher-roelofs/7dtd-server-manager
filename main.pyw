@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-
+import config
 import gui
 import telconn
 import threading

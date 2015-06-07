@@ -1,7 +1,5 @@
 __author__ = 'christopher'
 
-import time
-
 import parse
 import thread
 import commands
