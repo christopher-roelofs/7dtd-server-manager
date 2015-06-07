@@ -25,7 +25,7 @@ def in_radius(obj1,obj2,radius):
     obj1y = obj1.split(" ")[3]
     obj2x = obj2.split(" ")[0]
     obj2y = obj2.split(" ")[3]
-    if float(obj2x)-radius <= float(obj1x) <= float(obj2x)+radius and float(obj2y)-radius <= float(obj1y) <= float(obj2y)+radius:
+    if float(obj2x) - int(radius) <= float(obj1x) <= float(obj2x) + int(radius) and float(obj2y) - int(radius) <= float(obj1y) <= float(obj2y)+ int(radius):
         return True
     else:
         return  False
