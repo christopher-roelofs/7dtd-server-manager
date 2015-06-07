@@ -81,11 +81,12 @@ def load_airdrops():
             cur = conn.cursor()
             cur.execute("SELECT * FROM Airdrop")
             rows = cur.fetchall()
-            logger.log("Loading airdrops...")
-            for row in rows:
-                drop = str(row[0])
-                memorydb.airdrops.append(drop)
-                logger.log_verbose(drop)
+            if len(rows)>0:
+                logger.log("Loading airdrops...")
+                for row in rows:
+                    drop = str(row[0])
+                    memorydb.airdrops.append(drop)
+                    logger.log_verbose(drop)
 
     except sqlite3.Error as e:
         if conn:
