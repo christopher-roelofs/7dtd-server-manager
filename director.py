@@ -95,9 +95,9 @@ def route(line):
         if p.type == "GameEvent":
             if p.event == "Airdrop":
                 location = util.format_coor(p.location)
-                memorydb.airdrops.append(location)
+                memorydb.airdrops.append(p.location)
                 logger.log("Airdrop: " + location)
-                playerdb.save_airdrop(location)
+                playerdb.save_airdrop(p.location)
                 if runtime.server:
                     commands.say("Airdrop: " + location)
 
@@ -257,19 +257,24 @@ def route(line):
                 logger.log(p.formatted_text)
                 if runtime.server:
                     for drop in memorydb.airdrops:
-                        commands.pm(p.name,"Airdrop: " + drop)
+                        if util.is_coor_formatted(drop):
+                            commands.pm(p.name,"Airdrop: " + drop)
+                        else:
+                            commands.pm(p.name,"Airdrop: " + util.format_coor(drop))
 
             if p.event == "Claim":
                 logger.log(p.formatted_text)
                 found = 0
                 if runtime.server:
                     player = memorydb.get_player_from_name(p.name)
-                    obj1 = util.format_coor(player.location)
+                    obj1 = player.location
                     for drop in memorydb.airdrops:
+                        if util.is_coor_formatted(drop):
+                            drop = util.convert_coor(drop)
                         if util.in_radius(obj1,drop,runtime.drop_claim_radius):
                             memorydb.airdrops.remove(drop)
                             playerdb.delete_airdrop(drop)
-                            commands.pm(p.name,"You have claimed the airdrop at: " + str(drop))
+                            commands.pm(p.name,"You have claimed the airdrop at: " + str(util.format_coor(drop)))
                             found = 1
                     if found == 0:
                         commands.pm(p.name,"You need to be in a " + str(runtime.drop_claim_radius) + " block radius of an airdrop to claim")
