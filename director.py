@@ -272,7 +272,10 @@ def route(line):
                         if util.in_radius(obj1,drop,runtime.drop_claim_radius):
                             memorydb.airdrops.remove(drop)
                             playerdb.delete_airdrop(drop)
-                            commands.pm(p.name,"You have claimed the airdrop at: " + str(util.format_coor(drop)))
+                            if util.is_coor_formatted(drop):
+                                commands.pm(p.name,"You have claimed the airdrop at: " + str(drop))
+                            else:
+                                commands.pm(p.name,"You have claimed the airdrop at: " + str(util.format_coor(drop)))
                             found = 1
                     if found == 0:
                         commands.pm(p.name,"You need to be in a " + str(runtime.drop_claim_radius) + " block radius of an airdrop to claim")
