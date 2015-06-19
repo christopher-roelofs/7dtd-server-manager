@@ -1,5 +1,10 @@
 __author__ = 'christopher'
 
+def is_coor_formatted(coor):
+    if "/" in coor:
+        return True
+    else:
+        return False
 
 def format_coor(coor):      #used to go from 100 64 100 format to 100 S / 100 N format
     x = coor.split()[0]
@@ -27,7 +32,7 @@ def convert_coor(coor):  #used to go from 100 S / 100 E format to 100 54 100 for
         y = "-" + y
 
     if split_coor[4] == "W":
-        x + "-" + x
+        x = "-" + x
     converted = x + " " + "64" + " " + y
     return converted
 
@@ -39,7 +44,6 @@ def in_radius(obj1,obj2,radius):
         obj1 = convert_coor(obj1)
     if is_coor_formatted(obj2):
         obj2 = convert_coor(obj2)
-    print obj2
     obj1x = obj1.split(" ")[0]
     obj1y = obj1.split(" ")[2]
     obj2x = obj2.split(" ")[0]
@@ -49,8 +53,3 @@ def in_radius(obj1,obj2,radius):
     else:
         return  False
 
-def is_coor_formatted(coor):
-    if "/" in coor:
-        return True
-    else:
-        return False

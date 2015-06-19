@@ -129,10 +129,10 @@ def route(line):
                 player = memorydb.get_player_from_name(p.name)
                 player.bag = player.location
                 playerdb.save_player(p.name)
-                logger.log_verbose("Setting " + player.name + " revive point to: " + parse.format_coor(player.location))
+                logger.log_verbose("Setting " + player.name + " revive point to: " + util.format_coor(player.location))
                 logger.log(p.formatted_text)
                 if runtime.server:
-                    commands.pm(player.name, "Setting your revive point to: "+ parse.format_coor(player.location))
+                    commands.pm(player.name, "Setting your revive point to: "+ util.format_coor(player.location))
 
             if p.event == "Update":
                 memorydb.add_online_player(p.name)
@@ -151,10 +151,10 @@ def route(line):
                 logger.log(p.formatted_text)
                 memorydb.set_player_home(p.name)
                 player = memorydb.get_player_from_name(p.name)
-                logger.log("Setting "+parse.format_coor(player.home) + " as home for " + player.name)
+                logger.log("Setting "+util.format_coor(player.home) + " as home for " + player.name)
                 playerdb.save_player(p.name)
                 if runtime.server:
-                    commands.pm(player.name,"Home has been set to: " + parse.format_coor(player.home))
+                    commands.pm(player.name,"Home has been set to: " + util.format_coor(player.home))
 
 
             if p.event == "Home":
