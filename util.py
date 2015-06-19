@@ -39,6 +39,7 @@ def in_radius(obj1,obj2,radius):
         obj1 = convert_coor(obj1)
     if is_coor_formatted(obj2):
         obj2 = convert_coor(obj2)
+    print obj2
     obj1x = obj1.split(" ")[0]
     obj1y = obj1.split(" ")[2]
     obj2x = obj2.split(" ")[0]
