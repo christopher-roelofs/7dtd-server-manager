@@ -269,8 +269,6 @@ def route(line):
                     player = memorydb.get_player_from_name(p.name)
                     obj1 = player.location
                     for drop in memorydb.airdrops:
-                        if util.is_coor_formatted(drop):
-                            drop = util.convert_coor(drop)
                         if util.in_radius(obj1,drop,runtime.drop_claim_radius):
                             memorydb.airdrops.remove(drop)
                             playerdb.delete_airdrop(drop)
